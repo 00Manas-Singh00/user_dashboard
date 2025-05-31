@@ -8,15 +8,16 @@ import { z } from 'zod';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  street: string;
-  city: string;
-  zip: string;
-}
+// interface FormData {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   street: string;
+//   city: string;
+//   zip: string;
+// }
 
+// Define Zod schema for validation
 const formDataSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.string().min(1, 'Email is required').email('Invalid email'),

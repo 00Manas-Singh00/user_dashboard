@@ -88,8 +88,8 @@ const DashboardPage: React.FC = () => {
         }));
         setUsers([...data, ...mappedLocalUsers]);
         setFilteredUsers([...data, ...mappedLocalUsers]);
-      } catch (err: any) {
-        setError(err.message || 'Unknown error');
+      } catch (err: unknown) {
+        setError((err as Error).message || 'Unknown error');
       } finally {
         setLoading(false);
       }
@@ -121,7 +121,7 @@ const DashboardPage: React.FC = () => {
 
     if (isLocal) {
       const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
-      const updated = localUsers.filter((u: any) => u.id !== userToDelete.id);
+      const updated = localUsers.filter((u: User) => u.id !== userToDelete.id);
       localStorage.setItem('localUsers', JSON.stringify(updated));
     }
     setUsers((prev) => prev.filter((u) => u.id !== userToDelete.id));
@@ -156,7 +156,7 @@ const DashboardPage: React.FC = () => {
     if (typeof editUser.id === 'number' && editUser.id > 1000) isLocal = true;
     if (isLocal) {
       const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
-      const updated = localUsers.map((u: any) => (u.id === editUser.id ? {
+      const updated = localUsers.map((u: User) => (u.id === editUser.id ? {
         ...u,
         name: editUser.name,
         email: editUser.email,
