@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+html.dark {
+  --bg: #18181b;
+  --fg: #f4f4f5;
+  --card: #232336;
+  --border: #33334d;
+  --accent: #6366f1;
+}
+html {
+  --bg: #f4f4f5;
+  --fg: #18181b;
+  --card: #fff;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  transition: background 0.3s, color 0.3s;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+.accent {
+  background: var(--accent);
+  color: #fff;
+}
+
